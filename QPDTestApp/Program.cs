@@ -12,19 +12,29 @@ namespace QPDTestApp
             while (true)
             {
                 Console.Write("Введите число: ");
-                int number = int.Parse(Console.ReadLine());
 
-                if (number == 0)
-                    break;
-
-                int sum = GetSum(number);
-
-                if (sum > MaxSumOfDigits)
+                try
                 {
-                    MaxSumOfDigits = sum;
-                    NumberWithMaxSum = number;
+                    int number = int.Parse(Console.ReadLine());
+
+                    if (number == 0)
+                        break;
+
+                    int sum = GetSum(Math.Abs(number));
+
+                    if (sum > MaxSumOfDigits)
+                    {
+                        MaxSumOfDigits = sum;
+                        NumberWithMaxSum = number;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Ошибка! Введено нецелое число либо буквы");
                 }
             }
+
+
 
             if (NumberWithMaxSum != 0)
                 Console.WriteLine($"Число с максимальной суммой: {NumberWithMaxSum}   (Сумма = {MaxSumOfDigits})");
