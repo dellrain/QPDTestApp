@@ -2,9 +2,9 @@
 
 namespace QPDTestApp
 {
-    internal class Program
+    public class QPDTestApp
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int MaxSumOfDigits = 0;
             int NumberWithMaxSum = 0;
@@ -31,6 +31,10 @@ namespace QPDTestApp
                 catch (FormatException)
                 {
                     Console.WriteLine("Ошибка! Введено нецелое число либо буквы");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Ошибка! Введено слишком большое число");
                 }
             }
 
